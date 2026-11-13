@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-heading mb-4">
+    <p class="eyebrow mb-2">Soluciones para ti</p>
+    <h1 class="fw-bold">Nuestros servicios</h1>
+    <p class="text-secondary mb-0">
+        Explora herramientas diseñadas para que tus consultas y cálculos sean más sencillos.
+    </p>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <article class="card service-card h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <span class="service-symbol mb-3" aria-hidden="true">$</span>
+                <h2 class="h4 card-title">Calculadora de compra</h2>
+                <p class="card-text text-secondary flex-grow-1">
+                    Organiza el costo de tus compras y consulta rápidamente el total de tus
+                    productos.
+                </p>
+                <a href="{{ url_for('compra') }}" class="btn btn-outline-primary align-self-start">
+                    Explorar herramienta
+                </a>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-4">
+        <article class="card service-card h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <span class="service-symbol mb-3" aria-hidden="true">=</span>
+                <h2 class="h4 card-title">Calculadora de salario</h2>
+                <p class="card-text text-secondary flex-grow-1">
+                    Realiza cálculos relacionados con tu salario con una herramienta clara y
+                    fácil de consultar.
+                </p>
+                <a href="{{ url_for('salario') }}" class="btn btn-outline-primary align-self-start">
+                    Explorar herramienta
+                </a>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-4">
+        <article class="card service-card h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <span class="service-symbol mb-3" aria-hidden="true">°</span>
+                <h2 class="h4 card-title">Conversor de temperatura</h2>
+                <p class="card-text text-secondary flex-grow-1">
+                    Consulta conversiones de temperatura de manera práctica para tus
+                    actividades cotidianas.
+                </p>
+                <a href="{{ url_for('temperatura') }}" class="btn btn-outline-primary align-self-start">
+                    Explorar herramienta
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

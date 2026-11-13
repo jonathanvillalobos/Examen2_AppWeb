@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="welcome-panel mb-4 mb-lg-5">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <p class="eyebrow mb-2">Información útil, en un solo lugar</p>
+            <h1 class="display-5 fw-bold">Bienvenido al Portal de Servicios</h1>
+            <p class="lead text-secondary mb-0">
+                Consulta información de nuestra empresa y utiliza herramientas sencillas
+                para resolver cálculos cotidianos.
+            </p>
+        </div>
+        <div class="col-lg-5">
+            <div class="quick-links">
+                <a class="quick-link" href="{{ url_for('compra') }}">
+                    <span class="quick-link-icon" aria-hidden="true">$</span>
+                    <span>Compra</span>
+                </a>
+                <a class="quick-link" href="{{ url_for('salario') }}">
+                    <span class="quick-link-icon" aria-hidden="true">=</span>
+                    <span>Salario</span>
+                </a>
+                <a class="quick-link" href="{{ url_for('temperatura') }}">
+                    <span class="quick-link-icon" aria-hidden="true">°</span>
+                    <span>Temperatura</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section aria-label="Imágenes del Portal de Servicios">
+    <div id="portalCarousel" class="carousel slide carousel-fade shadow-sm"
+         data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#portalCarousel" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Imagen 1"></button>
+            <button type="button" data-bs-target="#portalCarousel" data-bs-slide-to="1"
+                    aria-label="Imagen 2"></button>
+            <button type="button" data-bs-target="#portalCarousel" data-bs-slide-to="2"
+                    aria-label="Imagen 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="{{ url_for('static', filename='img/Empresa.jpeg') }}"
+                     class="d-block w-100" alt="Nuestro equipo y empresa">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{{ url_for('static', filename='img/Servicio a cliente.jpeg') }}"
+                     class="d-block w-100" alt="Atención y servicio al cliente">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{{ url_for('static', filename='img/Calidad.jpg') }}"
+                     class="d-block w-100" alt="Compromiso con la calidad">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#portalCarousel"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#portalCarousel"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+</section>
+{% endblock %}

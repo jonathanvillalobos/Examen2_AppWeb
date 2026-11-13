@@ -1,0 +1,237 @@
+:root {
+    --portal-ink: #44375c;
+    --portal-muted: #766b89;
+    --portal-accent: #8064a8;
+    --portal-border: #e4d9ef;
+    --portal-surface: #faf7fd;
+    --portal-lilac: #f0e8f8;
+    --portal-pink: #f8edf5;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--portal-ink);
+    background:
+        radial-gradient(ellipse at 12% 0%, rgb(240 232 248 / 55%), transparent 32rem),
+        #fff;
+}
+
+main {
+    flex: 1;
+}
+
+.navbar-brand {
+    color: var(--portal-ink);
+}
+
+.navbar {
+    background-color: rgb(250 247 253 / 95%) !important;
+    box-shadow: 0 0.25rem 1rem rgb(68 55 92 / 5%);
+}
+
+.navbar-brand:hover {
+    color: var(--portal-accent);
+}
+
+.navbar .nav-link {
+    border-radius: 0.5rem;
+    padding-right: 0.85rem;
+    padding-left: 0.85rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: var(--portal-ink);
+    background-color: var(--portal-lilac);
+}
+
+.navbar-toggler {
+    border-color: var(--portal-border);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgb(128 100 168 / 20%);
+}
+
+.welcome-panel {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--portal-border);
+    border-radius: 1rem;
+    background: linear-gradient(125deg, #faf7fd 15%, #f5eef9 100%);
+    box-shadow: 0 0.5rem 1.5rem rgb(68 55 92 / 6%);
+}
+
+.welcome-panel::after {
+    position: absolute;
+    right: -3.5rem;
+    bottom: -5rem;
+    width: 12rem;
+    height: 12rem;
+    border: 1.5rem solid rgb(228 217 239 / 35%);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: var(--portal-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.welcome-panel h1,
+.page-heading h1 {
+    color: var(--portal-ink);
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.quick-link {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 6rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border: 1px solid var(--portal-border);
+    border-radius: 0.75rem;
+    color: var(--portal-ink);
+    background: linear-gradient(145deg, #fff 25%, #fbf8fd 100%);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 0.2rem 0.75rem rgb(68 55 92 / 5%);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--portal-accent);
+    color: var(--portal-accent);
+    box-shadow: 0 0.4rem 1rem rgb(128 100 168 / 15%);
+}
+
+.quick-link-icon,
+.service-symbol {
+    color: var(--portal-accent);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.carousel {
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--portal-surface);
+    box-shadow: 0 0.5rem 1.5rem rgb(68 55 92 / 10%) !important;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: clamp(15rem, 42vw, 30rem);
+    object-fit: cover;
+}
+
+.page-heading {
+    max-width: 52rem;
+}
+
+.info-card,
+.value-card,
+.service-card,
+.contact-card {
+    border-color: var(--portal-border);
+    border-radius: 0.85rem;
+    box-shadow: 0 0.25rem 1rem rgb(68 55 92 / 6%);
+}
+
+.info-card {
+    background: linear-gradient(135deg, #fff 35%, var(--portal-surface) 100%);
+}
+
+.value-card:nth-child(odd) {
+    background-color: #fcf9fe;
+}
+
+.value-card:nth-child(even) {
+    background-color: #f8f4fb;
+}
+
+.value-card .text-bg-primary {
+    color: #fff !important;
+    background-color: var(--portal-accent) !important;
+}
+
+.value-card .text-bg-info {
+    color: #55416f !important;
+    background-color: #e9dcf4 !important;
+}
+
+.service-card:nth-child(3n + 1) {
+    background: linear-gradient(155deg, #fff 45%, #faf4fc 100%);
+}
+
+.service-card:nth-child(3n + 2) {
+    background: linear-gradient(155deg, #fff 45%, #f5f0fb 100%);
+}
+
+.service-card:nth-child(3n) {
+    background: linear-gradient(155deg, #fff 45%, #fdf3f8 100%);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #715496;
+    --bs-btn-border-color: #bba8d2;
+    --bs-btn-hover-bg: #8064a8;
+    --bs-btn-hover-border-color: #8064a8;
+    --bs-btn-active-bg: #6f558f;
+    --bs-btn-active-border-color: #6f558f;
+}
+
+.service-card,
+.contact-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.service-card:hover,
+.contact-card:hover {
+    transform: translateY(-3px);
+    border-color: #cbb8df;
+    box-shadow: 0 0.5rem 1.25rem rgb(68 55 92 / 12%);
+}
+
+.contact-label {
+    color: var(--portal-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+footer {
+    background: linear-gradient(90deg, #faf7fd, #f8f3fb);
+}
+
+@media (max-width: 575.98px) {
+    .quick-links {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-link {
+        min-height: 4.5rem;
+        flex-direction: row;
+    }
+}
