@@ -1,9 +1,59 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="page-heading">
-    <p class="eyebrow mb-2">Herramientas del portal</p>
-    <h1 class="fw-bold">Calculadora de salario</h1>
-    <p class="text-secondary mb-0">Próximamente podrás realizar tus cálculos salariales aquí.</p>
-</section>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="mb-4">
+            <h1 class="fw-bold">Calculadora de salario</h1>
+            <p class="text-secondary">Calcula el pago semanal con horas extra al doble después de 40 horas.</p>
+        </div>
+
+        <form method="POST" class="card card-body shadow-sm mb-4">
+            <div class="mb-3">
+                <label for="horas" class="form-label">Horas trabajadas</label>
+                <input type="number" class="form-control" id="horas" name="horas"
+                       step="any" min="0" required
+                       value="{{ horas if horas is not none else '' }}">
+            </div>
+            <div class="mb-3">
+                <label for="pago_hora" class="form-label">Pago por hora</label>
+                <input type="number" class="form-control" id="pago_hora" name="pago_hora"
+                       step="any" min="0" required
+                       value="{{ pago_hora if pago_hora is not none else '' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular salario</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+
+        {% if resultado is not none %}
+        <section class="card border-primary shadow-sm" aria-labelledby="resultado-salario">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h5 mb-0" id="resultado-salario">Desglose del salario</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-7">Horas trabajadas</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(horas) }}</dd>
+                    <dt class="col-sm-7">Pago por hora</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(pago_hora) }}</dd>
+                    <dt class="col-sm-7">Horas extra</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(horas_extra) }}</dd>
+                    <dt class="col-sm-7">Pago normal (hasta 40 horas)</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(pago_normal) }}</dd>
+                    <dt class="col-sm-7">Pago extra (al doble)</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(pago_extra) }}</dd>
+                </dl>
+                <hr>
+                <div class="d-flex justify-content-between fs-5 fw-bold">
+                    <span>Salario total</span>
+                    <span>{{ "%.2f"|format(total_salario) }}</span>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

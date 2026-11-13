@@ -1,9 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="page-heading">
-    <p class="eyebrow mb-2">Herramientas del portal</p>
-    <h1 class="fw-bold">Calculadora de compra</h1>
-    <p class="text-secondary mb-0">Próximamente podrás realizar tus cálculos de compra aquí.</p>
-</section>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="mb-4">
+            <h1 class="fw-bold">Calculadora de compra</h1>
+            <p class="text-secondary">Ingresa la cantidad y el precio por unidad para calcular el total.</p>
+        </div>
+
+        <form method="POST" class="card card-body shadow-sm mb-4">
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad"
+                       step="any" min="0" required
+                       value="{{ cantidad if cantidad is not none else '' }}">
+            </div>
+            <div class="mb-3">
+                <label for="precio_unitario" class="form-label">Precio unitario</label>
+                <input type="number" class="form-control" id="precio_unitario"
+                       name="precio_unitario" step="any" min="0" required
+                       value="{{ precio_unitario if precio_unitario is not none else '' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular compra</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+
+        {% if resultado is not none %}
+        <section class="card border-primary shadow-sm" aria-labelledby="resultado-compra">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h5 mb-0" id="resultado-compra">Detalle de la compra</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-7">Cantidad</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(cantidad) }}</dd>
+                    <dt class="col-sm-7">Precio unitario</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(precio_unitario) }}</dd>
+                    <dt class="col-sm-7">Subtotal</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(subtotal) }}</dd>
+                    <dt class="col-sm-7">Descuento</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(descuento) }}</dd>
+                </dl>
+                <hr>
+                <div class="d-flex justify-content-between fs-5 fw-bold">
+                    <span>Total</span>
+                    <span>{{ "%.2f"|format(total) }}</span>
+                </div>
+                {% if descuento > 0 %}
+                <p class="text-success mb-0 mt-2">Se aplicó un descuento del 10 %.</p>
+                {% else %}
+                <p class="text-secondary mb-0 mt-2">No aplica descuento para este subtotal.</p>
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

@@ -1,9 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="page-heading">
-    <p class="eyebrow mb-2">Herramientas del portal</p>
-    <h1 class="fw-bold">Conversor de temperatura</h1>
-    <p class="text-secondary mb-0">Próximamente podrás convertir temperaturas aquí.</p>
-</section>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="mb-4">
+            <h1 class="fw-bold">Conversor de temperatura</h1>
+            <p class="text-secondary">Convierte una temperatura en grados Celsius a Fahrenheit y Kelvin.</p>
+        </div>
+
+        <form method="POST" class="card card-body shadow-sm mb-4">
+            <div class="mb-3">
+                <label for="celsius" class="form-label">Temperatura en Celsius (°C)</label>
+                <input type="number" class="form-control" id="celsius" name="celsius"
+                       step="any" required
+                       value="{{ celsius if celsius is not none else '' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Convertir temperatura</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+
+        {% if resultado is not none %}
+        <section class="card border-primary shadow-sm" aria-labelledby="resultado-temperatura">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h5 mb-0" id="resultado-temperatura">Resultado de la conversión</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-secondary">Temperatura ingresada: {{ "%.2f"|format(celsius) }} °C</p>
+                <dl class="row mb-0">
+                    <dt class="col-sm-7">Fahrenheit</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(fahrenheit) }} °F</dd>
+                    <dt class="col-sm-7">Kelvin</dt>
+                    <dd class="col-sm-5 text-sm-end">{{ "%.2f"|format(kelvin) }} K</dd>
+                </dl>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
